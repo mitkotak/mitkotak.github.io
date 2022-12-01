@@ -27,7 +27,7 @@ CV: <a href="https://mitkotak.github.io/assets/pdf/Mit_CV.pdf" target="_blank">h
   Mit Kotak, Eric Yu, Jinghan Huang, Jing Zhou, Milton Ruiz, Antonios Tsokaros, Lunan Sun, Stuart L. Shapiro \
   Coalition for Academic Scientific Computation 2023 Brochure, Page 14 \
   Available [here](https://casc.org/researchpub/brochures/) \
-  Visualization [here](https://mitkotak.github.io/assets/jpg/CASC_2023.jpg)
+  Visualization [here](https://www.ideals.illinois.edu/items/123589)
 
 - 3D Visualizations of Black Hole Binaries and Disks in Full General Relativity (Grant Progress Report) \
   Mit Kotak \
