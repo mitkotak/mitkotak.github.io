@@ -16,12 +16,13 @@ social: false  # includes social icons at the bottom of the page
 ---
 
 
-Hiya ! I am  a senior in Engineering Physics at UIUC and I am hoping to become a [systems person](https://www.usenix.org/system/files/1311_05-08_mickens.pdf) with the ability to morph mathematical equations into obedient simulations. My work lies at the intersection of Computational Science and High Performance Computing (HPC). Since my sophomore year, I have been involved in research projects in Numerical Relativity, Scientific Computing and HPC Middlewares.
-- I am currently working with the Illinois Relativity Group led by [Prof. Stuart Shapiro](https://physics.illinois.edu/people/directory/profile/slshapir) on [3D Visualizations of Astrophysics Simulations](http://research.physics.illinois.edu/CTA/IRG/movies.html).
-- I am also involved in neutron star simulations as a [SPIN intern](http://spin.ncsa.illinois.edu/interns/) at the National Center for Supercomputing Center with [Prof. Antonios Tsokaros](https://physics.illinois.edu/people/directory/profile/tsokaros).
-- I am working as a research intern at the [CyberGIS Center for Advanced Digital and Spatial Studies](http://cybergis.illinois.edu/) under [Prof. Anand Padmanabhan](https://ggis.illinois.edu/directory/profile/apadmana).
-- For my senior thesis, I am working with [Prof.  Andreas Klöckner](https://andreask.cs.illinois.edu/aboutme/) at the [Center for Exascale-enabled Design](https://ceesd.illinois.edu).
-- In addition to research, I also work as an [Undegraduate Research Ambassador](https://forms.illinois.edu/sec/1027002580) for the [Office of Undergraduate Research](https://www.undergradresearch.illinois.edu).
+Hiya ! I am  a senior in Engineering Physics at UIUC and I am hoping to become a [systems person](https://www.usenix.org/system/files/1311_05-08_mickens.pdf) with the ability to morph mathematical equations into obedient simulations. My work lies at the intersection of Computational Science and High Performance Computing (HPC). Since my sophomore year, I have been involved in research projects in Numerical Relativity, Scientific Computing and HPC Middlewares. My current research threads are:
+- [3D Visualizations of Astrophysics Simulations](http://research.physics.illinois.edu/CTA/IRG/movies.html) with the Illinois Relativity Group led by [Prof. Stuart Shapiro](https://physics.illinois.edu/people/directory/profile/slshapir)
+- Neutron star simulations with [Prof. Antonios Tsokaros](https://physics.illinois.edu/people/directory/profile/tsokaros) as a [SPIN intern](http://spin.ncsa.illinois.edu/interns/) at the [National Center for Supercomputing Center](https://www.ncsa.illinois.edu) (NCSA).
+- Geospatial Middlewares with [Prof. Anand Padmanabhan](https://ggis.illinois.edu/directory/profile/apadmana) as a research intern at the [CyberGIS Center for Advanced Digital and Spatial Studies](http://cybergis.illinois.edu/).
+- Senior thesis on GPU Computing with [Prof.  Andreas Klöckner](https://andreask.cs.illinois.edu/aboutme/) at the [Center for Exascale-enabled Design](https://ceesd.illinois.edu).
+
+In addition to research, I also work as an [Undegraduate Research Ambassador](https://forms.illinois.edu/sec/1027002580) for the [Office of Undergraduate Research](https://www.undergradresearch.illinois.edu).
 
 
 CV: <a href="https://mitkotak.github.io/assets/pdf/Mit_CV.pdf" target="_blank">here</a>
@@ -52,6 +53,6 @@ CV: <a href="https://mitkotak.github.io/assets/pdf/Mit_CV.pdf" target="_blank">h
 
 ## HPC Middlewares for Geospatial Computing
 
-- Localizing CyberGIS-Compute through Containers (Unfinished Abstract) \
+- Localizing CyberGIS-Compute through Containers (Inprogress Abstract) \
   Mit Kotak, Zimo Xiao \
   Available [here](https://mitkotak.github.io/assets/pdf/SigspatialSRC2022_LocalDeployment.pdf)
