@@ -53,6 +53,6 @@ CV: <a href="https://mitkotak.github.io/assets/pdf/Mit_CV.pdf" target="_blank">h
 
 ## HPC Middlewares for Geospatial Computing
 
-- Localizing CyberGIS-Compute through Containers (Inprogress Abstract) \
+- Localizing CyberGIS-Compute through Containers (In-progress Abstract) \
   Mit Kotak, Zimo Xiao \
   Available [here](https://mitkotak.github.io/assets/pdf/SigspatialSRC2022_LocalDeployment.pdf)
