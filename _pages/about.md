@@ -61,3 +61,9 @@ Transcripts: <a href="https://mitkotak.github.io/assets/pdf/Transcripts/Mit_Kota
 - Localizing CyberGIS-Compute through Containers (In-progress Abstract) \
   Mit Kotak, Zimo Xiao \
   Available [here](https://mitkotak.github.io/assets/pdf/SigspatialSRC2022_LocalDeployment.pdf)
+
+## High Performance Computing for Neutron Stars
+
+- 2022-2023 Proposal \
+  Mit Kotak, Antonios Tsokaros \
+  Available [here](https://mitkotak.github.io/assets/pdf/Mit_Kotak_SPIN_Research_Plan_2022.pdf)
