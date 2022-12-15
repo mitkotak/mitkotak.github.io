@@ -27,8 +27,6 @@ In addition to research, I also work as an [Undegraduate Research Ambassador](ht
 
 CV: <a href="https://mitkotak.github.io/assets/pdf/Mit_CV.pdf" target="_blank">here</a>
 
-Transcripts: <a href="https://mitkotak.github.io/assets/pdf/Transcripts/Mit_Kotak_Parkland_Transcript.pdf" target="_blank">Parkland</a>, 
-<a href="https://mitkotak.github.io/assets/pdf/Transcripts/Unofficial_Transcript_Mit_Kotak_2022.pdf" target="_blank">UIUC</a>
 
 # Research Projects
 
