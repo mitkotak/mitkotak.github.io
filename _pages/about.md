@@ -27,6 +27,8 @@ In addition to research, I also work as an [Undegraduate Research Ambassador](ht
 
 CV: <a href="https://mitkotak.github.io/assets/pdf/Mit_CV.pdf" target="_blank">here</a>
 
+Statment of Purpose: <a href="https://mitkotak.github.io/assets/pdf/SOP/SOP_General.pdf" target="_blank">here</a>
+
 
 # Research Projects
 
