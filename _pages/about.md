@@ -21,6 +21,7 @@ Hiya ! I am  a senior in [Engineering Physics](http://catalog.illinois.edu/archi
 - Neutron star simulations with [Prof. Antonios Tsokaros](https://physics.illinois.edu/people/directory/profile/tsokaros) as a [SPIN intern](http://spin.ncsa.illinois.edu/interns/) at the [National Center for Supercomputing Center](https://www.ncsa.illinois.edu) (NCSA).
 - Geospatial Middlewares with [Prof. Anand Padmanabhan](https://ggis.illinois.edu/directory/profile/apadmana) as a research intern at the [CyberGIS Center for Advanced Digital and Spatial Studies](http://cybergis.illinois.edu/).
 - Senior thesis on GPU Computing with [Prof.  Andreas Klöckner](https://andreask.cs.illinois.edu/aboutme/) at the [Center for Exascale-enabled Design](https://ceesd.illinois.edu).
+- Pesticide resistance monitoring frameworks with [Prof. Rebecca Smith](https://experts.illinois.edu/en/persons/rebecca-lee-smith) at [CDC-funded Midwest Center of Excellence in Vector-Borne Disease](https://www.cdc.gov/ncezid/dvbd/coevbd/midwest.html)
 
 In addition to research, I also work as an [Undegraduate Research Ambassador](https://forms.illinois.edu/sec/1027002580) for the [Office of Undergraduate Research](https://www.undergradresearch.illinois.edu).
 
