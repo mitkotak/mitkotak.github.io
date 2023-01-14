@@ -51,7 +51,7 @@ Statment of Purpose: <a href="https://mitkotak.github.io/assets/pdf/SOP/SOP_Gene
   Mit Kotak, Eric Yu, Jinghan Huang, Jing Zhou, Milton Ruiz, Antonios Tsokaros, Lunan Sun, Stuart L. Shapiro \
   Coalition for Academic Scientific Computation 2023 Brochure, Page 14 \
   Available [here](https://casc.org/researchpub/brochures/) \
-  Visualization [here](https://www.ideals.illinois.edu/items/123589)
+  Visualization [here](https://www.ideals.illinois.edu/items/123589) \
   Department Post [here](https://icasu.illinois.edu/news/Mit-Kotak-visualization)
 
 - 3D Visualizations of Black Hole Binaries and Disks in Full General Relativity (Grant Progress Report) \
