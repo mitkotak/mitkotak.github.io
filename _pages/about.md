@@ -35,6 +35,7 @@ Statment of Purpose: <a href="https://mitkotak.github.io/assets/pdf/SOP/SOP_Gene
 
 ## Efficiently executing data flow graphs on GPUs
 
+- [Senior Thesis](https://mitkotak.github.io/assets/pdf/cudagraph_thesis_v3.pdf)
 - Task Graph Parallelism on GPUs via *CUDAGraphs* (Talk) \
   Mit Kotak, Kaushik Kulkarni, Andreas Klöckner \
   CEESD AST Review 2022 \
