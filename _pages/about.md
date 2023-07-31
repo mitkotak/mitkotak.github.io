@@ -16,9 +16,9 @@ social: false  # includes social icons at the bottom of the page
 ---
 
 
-Hiya ! I am a graduate student in MIT CSE working with Tess Smidt (Go Atomic Architects !). I am hoping to bring a [systems perspective](https://www.usenix.org/system/files/1311_05-08_mickens.pdf) to the geometric deep learning community.
+Hiya ! I am a graduate student in [MIT CSE](https://cse.mit.edu) working with [Tess Smidt](https://blondegeek.github.io) [Go Atomic Architects](https://atomicarchitects.github.io) !). I am hoping to bring a [systems perspective](https://www.usenix.org/system/files/1311_05-08_mickens.pdf) to the geometric deep learning community.
 
-I did my undegrad in [Engineering Physics](http://catalog.illinois.edu/archivedacademiccatalogs/2020-2021/undergraduate/engineering/engineering-physics-bs/#degreerequirementstext) at [University of Illinois at Urbana Champaign](https://illinois.edu)  where I was involved in numerical Relativity, scientific Computing and HPC middlewares. In addition to research, I also worked as an [Undegraduate Research Ambassador](https://forms.illinois.edu/sec/1027002580) for the [Office of Undergraduate Research](https://www.undergradresearch.illinois.edu).
+I did my undegrad in [Engineering Physics](http://catalog.illinois.edu/archivedacademiccatalogs/2020-2021/undergraduate/engineering/engineering-physics-bs/#degreerequirementstext) at [University of Illinois at Urbana Champaign](https://illinois.edu) where I was involved in numerical relativity, scientific computing and HPC middlewares. In addition to research, I also worked as an [Undegraduate Research Ambassador](https://forms.illinois.edu/sec/1027002580) for the [Office of Undergraduate Research](https://www.undergradresearch.illinois.edu).
 
 
 CV: <a href="https://mitkotak.github.io/assets/pdf/Mit_CV.pdf" target="_blank">here</a>
