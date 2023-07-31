@@ -16,7 +16,7 @@ social: false  # includes social icons at the bottom of the page
 ---
 
 
-Hiya ! I am a graduate student in [MIT CSE](https://cse.mit.edu) working with [Tess Smidt](https://blondegeek.github.io) [Go Atomic Architects](https://atomicarchitects.github.io) !). I am hoping to bring a [systems perspective](https://www.usenix.org/system/files/1311_05-08_mickens.pdf) to the geometric deep learning community.
+Hiya ! I am a graduate student in [MIT CSE](https://cse.mit.edu) working with [Tess Smidt](https://blondegeek.github.io) ([Go Atomic Architects](https://atomicarchitects.github.io) !). I am hoping to bring a [systems perspective](https://www.usenix.org/system/files/1311_05-08_mickens.pdf) to the geometric deep learning community.
 
 I did my undegrad in [Engineering Physics](http://catalog.illinois.edu/archivedacademiccatalogs/2020-2021/undergraduate/engineering/engineering-physics-bs/#degreerequirementstext) at [University of Illinois at Urbana Champaign](https://illinois.edu) where I was involved in numerical relativity, scientific computing and HPC middlewares. In addition to research, I also worked as an [Undegraduate Research Ambassador](https://forms.illinois.edu/sec/1027002580) for the [Office of Undergraduate Research](https://www.undergradresearch.illinois.edu).
 
@@ -28,7 +28,7 @@ Statment of Purpose: <a href="https://mitkotak.github.io/assets/pdf/SOP/SOP_Gene
 
 # Research Projects
 
-## Efficiently executing data flow graphs on GPUs with [Prof.  Andreas Klöckner](https://andreask.cs.illinois.edu/aboutme/) @ [Center for Exascale-enabled Design](https://ceesd.illinois.edu)
+## Efficiently executing data flow graphs on GPUs with [Prof.  Andreas Klöckner](https://andreask.cs.illinois.edu/aboutme/) at [Center for Exascale-enabled Design](https://ceesd.illinois.edu)
 
 - [Senior Thesis: Efficiently executing DG-FEM workloads on GPUs via *CUDAGraphs*](https://mitkotak.github.io/assets/pdf/cudagraph_thesis_v3.pdf)
 
@@ -55,13 +55,13 @@ Statment of Purpose: <a href="https://mitkotak.github.io/assets/pdf/SOP/SOP_Gene
   Mit Kotak \
   Available [here](https://mitkotak.github.io/assets/pdf/RSG_Report.pdf)
 
-## HPC Middlewares for Geospatial Computing with [Prof. Anand Padmanabhan](https://ggis.illinois.edu/directory/profile/apadmana) @ [CyberGIS Center for Advanced Digital and Spatial Studies](http://cybergis.illinois.edu/)
+## HPC Middlewares for Geospatial Computing with [Prof. Anand Padmanabhan](https://ggis.illinois.edu/directory/profile/apadmana) at [CyberGIS Center for Advanced Digital and Spatial Studies](http://cybergis.illinois.edu/)
 
 - Localizing CyberGIS-Compute through Containers (In-progress Abstract) \
   Mit Kotak, Zimo Xiao \
   Available [here](https://mitkotak.github.io/assets/pdf/SigspatialSRC2022_LocalDeployment.pdf)
 
-## High Performance Computing for Neutron Stars with [Prof. Antonios Tsokaros](https://physics.illinois.edu/people/directory/profile/tsokaros) @ [National Center for Supercomputing Center](https://www.ncsa.illinois.edu) (NCSA)
+## High Performance Computing for Neutron Stars with [Prof. Antonios Tsokaros](https://physics.illinois.edu/people/directory/profile/tsokaros) at [National Center for Supercomputing Center](https://www.ncsa.illinois.edu) (NCSA)
 
 - 2022-2023 Proposal \
   Mit Kotak, Antonios Tsokaros \
