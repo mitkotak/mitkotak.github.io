@@ -16,7 +16,7 @@ social: false  # includes social icons at the bottom of the page
 ---
 
 
-Hiya ! I am a graduate student in [MIT CSE](https://cse.mit.edu) working with [Tess Smidt](https://blondegeek.github.io) ([Go Atomic Architects](https://atomicarchitects.github.io) !). I am hoping to bring a [systems perspective](https://www.usenix.org/system/files/1311_05-08_mickens.pdf) to the geometric deep learning community.
+Hiya ! I am a graduate student in [MIT CSE](https://cse.mit.edu) working with [Tess Smidt](https://blondegeek.github.io) and [Saman Amarasinghe](https://people.csail.mit.edu/saman/). I am hoping to bring a [systems perspective](https://www.usenix.org/system/files/1311_05-08_mickens.pdf) to the geometric deep learning community.
 
 I did my undegrad in [Engineering Physics](http://catalog.illinois.edu/archivedacademiccatalogs/2020-2021/undergraduate/engineering/engineering-physics-bs/#degreerequirementstext) at [University of Illinois at Urbana Champaign](https://illinois.edu) where I was involved in numerical relativity, scientific computing and HPC middlewares. In addition to research, I also worked as an [Undegraduate Research Ambassador](https://forms.illinois.edu/sec/1027002580) for the [Office of Undergraduate Research](https://www.undergradresearch.illinois.edu).
 
@@ -60,9 +60,14 @@ Statment of Purpose: <a href="https://mitkotak.github.io/assets/pdf/SOP/SOP_Gene
 ### HPC Middlewares for Geospatial Computing
 [Prof. Anand Padmanabhan](https://ggis.illinois.edu/directory/profile/apadmana) at [CyberGIS Center for Advanced Digital and Spatial Studies](http://cybergis.illinois.edu/)
 
-- Localizing CyberGIS-Compute through Containers (In-progress Abstract) \
-  Mit Kotak, Zimo Xiao \
-  Available [here](https://mitkotak.github.io/assets/pdf/SigspatialSRC2022_LocalDeployment.pdf)
+- Streamlined HPC Environments with CVMFS and CyberGIS-Compute \
+Alexander Michels, Mit Kotak, Anand Padmanabhan, Shaowen Wang \
+Available at https://docs.lib.purdue.edu/iguide/2023/presentations/8/
+
+- CyberGIS-Compute: Middleware for Democratizing Scalable Geocomputation \
+Alexander Michels, Anand Padmanabhan, Zimo Xiao, Mit Kotak, Furqan Baig, Shaowen Wang \
+Available at https://dx.doi.org/10.2139/ssrn.4625703
+
 
 ### High Performance Computing for Neutron Stars
 [Prof. Antonios Tsokaros](https://physics.illinois.edu/people/directory/profile/tsokaros) at [National Center for Supercomputing Center](https://www.ncsa.illinois.edu)
