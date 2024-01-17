@@ -29,9 +29,9 @@ Statment of Purpose: <a href="https://mitkotak.github.io/assets/pdf/SOP/SOP_Gene
 # Research Projects
 
 ### Efficiently executing data flow graphs on GPUs 
-[Prof.  Andreas Klöckner](https://andreask.cs.illinois.edu/aboutme/) at [Center for Exascale-enabled Design](https://ceesd.illinois.edu)
+[Prof.  Andreas Klöckner](https://andreask.cs.illinois.edu/aboutme/) at [Center for Exascale-enabled Scramjet Design](https://ceesd.illinois.edu)
 
-- [Senior Thesis: Efficiently executing DG-FEM workloads on GPUs via *CUDAGraphs*](https://mitkotak.github.io/assets/pdf/cudagraph_thesis_v3.pdf)
+- [Senior Thesis: Efficiently executing DG-FEM workloads on GPUs via CUDAGraphs](https://mitkotak.github.io/assets/pdf/cudagraph_thesis_v3.pdf)
 
 - Task Graph Parallelism on GPUs via *CUDAGraphs* (Talk) \
   Mit Kotak, Kaushik Kulkarni, Andreas Klöckner \
