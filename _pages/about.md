@@ -25,6 +25,7 @@ CV: <a href="https://mitkotak.github.io/assets/pdf/Mit_CV.pdf" target="_blank">h
 
 Statment of Purpose: <a href="https://mitkotak.github.io/assets/pdf/SOP/SOP_General.pdf" target="_blank">here</a> 
 
+Email: m[lastname]at[institution].edu
 
 # Research Projects
 
