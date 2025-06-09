@@ -21,13 +21,25 @@ Hiya ! I am a graduate student in [MIT CSE](https://cse.mit.edu) working with [T
 I did my undegrad in [Engineering Physics](http://catalog.illinois.edu/archivedacademiccatalogs/2020-2021/undergraduate/engineering/engineering-physics-bs/#degreerequirementstext) at [University of Illinois at Urbana Champaign](https://illinois.edu) where I was involved in numerical relativity, scientific computing and HPC middlewares. In addition to research, I also worked as an [Undegraduate Research Ambassador](https://forms.illinois.edu/sec/1027002580) for the [Office of Undergraduate Research](https://www.undergradresearch.illinois.edu).
 
 
-CV: <a href="https://mitkotak.github.io/assets/pdf/Mit_CV.pdf" target="_blank">here</a>
+CV: <a href="https://mitkotak.github.io/assets/pdf/Mit_CV.pdf" target="_blank">here</a> (Updated 11/2024)
 
 Statment of Purpose: <a href="https://mitkotak.github.io/assets/pdf/SOP/SOP_General.pdf" target="_blank">here</a> 
 
 Email: m[lastname]at[institution].edu
 
 # Research Projects
+
+### Tensor Products in E(3) Equivariant Networks
+
+- The Price of Freedom: Exploring Tradeoffs in Equivariant Tensor Product Operations \
+YuQing Xie, Ameya Daigavane, Mit Kotak, Tess Smidt \
+ICML 2025 \
+Available [here](https://icml.cc/virtual/2025/poster/45917)
+
+- High-performance training and inference for deep equivariant interatomic potentials \
+Chuin Wei Tan, Marc L. Descoteaux, Mit Kotak, Gabriel de Miranda Nascimento, Seán R. Kavanagh, Laura Zichi, Menghang Wang, Aadit Saluja, Yizhong R. Hu, Tess Smidt, Anders Johansson, William C. Witt, Boris Kozinsky, Albert Musaelian \
+Available [here](https://arxiv.org/abs/2504.16068)
+
 
 ### Efficiently executing data flow graphs on GPUs 
 [Prof.  Andreas Klöckner](https://andreask.cs.illinois.edu/aboutme/) at [Center for Exascale-enabled Scramjet Design](https://ceesd.illinois.edu)
