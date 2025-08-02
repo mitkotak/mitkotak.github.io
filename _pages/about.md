@@ -26,10 +26,8 @@ latest_posts:
 Hiya ! I am a graduate student in [MIT CSE](https://cse.mit.edu) working with [Tess Smidt](https://blondegeek.github.io) and [Saman Amarasinghe](https://people.csail.mit.edu/saman/). I am hoping to bring a [systems perspective](https://www.usenix.org/system/files/1311_05-08_mickens.pdf) to the geometric deep learning community.
 
 Concretly, I am interested in figuring out how to systematically design inductive biases that *win* the hardware
-lottery. This involves delectly  balancing the tradeoff between operations that give us data
-efficiency vs operations that the hardware likes, and more importantly exposing
-these tradeoffs to the ML/domain expert in an accessible manner.
-
+lottery i.e how to build models that balance between what the domain expert wants vs
+what the hardware wants.
 
 I did my undegrad in [Engineering Physics](http://catalog.illinois.edu/archivedacademiccatalogs/2020-2021/undergraduate/engineering/engineering-physics-bs/#degreerequirementstext) at [University of Illinois at Urbana Champaign](https://illinois.edu) where I was involved in numerical relativity, scientific computing and HPC middlewares. In addition to research, I also worked as an [Undegraduate Research Ambassador](https://forms.illinois.edu/sec/1027002580) for the [Office of Undergraduate Research](https://www.undergradresearch.illinois.edu).
 
