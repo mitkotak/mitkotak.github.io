@@ -35,6 +35,10 @@ Email: m[lastname]at[institution].edu
 
 ### Tensor Products in E(3) Equivariant Networks
 
+- Simplifying Equivariant GPU Kernels through Tile-based Programming \
+  Mit Kotak, CSE SM Thesis 2025 \ 
+  Available [here](https://mitkotak.github.io/assets/pdf/sm_thesis_v2.pdf)
+
 - The Price of Freedom: Exploring Tradeoffs in Equivariant Tensor Product Operations \
   YuQing Xie, Ameya Daigavane, Mit Kotak, Tess Smidt \
   ICML 2025 \
