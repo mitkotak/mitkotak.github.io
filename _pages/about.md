@@ -27,14 +27,7 @@ Hiya ! I am a graduate student in [MIT CSE](https://cse.mit.edu) working with [T
 Smidt](https://blondegeek.github.io) and [Saman
 Amarasinghe](https://people.csail.mit.edu/saman/). I am hoping to bring a [systems
 perspective](https://www.usenix.org/system/files/1311_05-08_mickens.pdf) to machine
-learning-based molecular modeling. I am currently thinking about:
-
-(1) How do we co-design inductive biases that maximize GPU utilization and minimize
-FLOPS for various downstream evals (protein design, molecular dynamics, structure
-relaxation, .....) ?
-
-(2) What GPU kernel/compiler infrastructure do we need to build to productively implement these
-inductive biases ?
+learning-based molecular modeling.
 
 I did my undegrad in [Engineering Physics](http://catalog.illinois.edu/archivedacademiccatalogs/2020-2021/undergraduate/engineering/engineering-physics-bs/#degreerequirementstext) at [University of Illinois at Urbana Champaign](https://illinois.edu) where I was involved in numerical relativity, scientific computing and HPC middlewares. In addition to research, I also worked as an [Undegraduate Research Ambassador](https://forms.illinois.edu/sec/1027002580) for the [Office of Undergraduate Research](https://www.undergradresearch.illinois.edu).
 
