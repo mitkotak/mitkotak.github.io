@@ -37,6 +37,12 @@ Email: m[lastname]at[institution].edu
 
 # Research Projects
 
+### Machine Learning Interatomic Potentials
+
+- Training a Foundational Model for Materials on a Budget \
+  Teddy Koker, Mit Kotak, Tess Smidt \
+  [AI4Mat @ NeurPS 2025](https://arxiv.org/abs/2508.16067)
+
 ### Tensor Products in E(3) Equivariant Networks
 
 - Simplifying Equivariant GPU Kernels through Tile-based Programming \
