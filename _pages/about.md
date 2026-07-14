@@ -24,8 +24,7 @@ latest_posts:
 ---
 
 Hiya ! I am a graduate student in [MIT CSE](https://cse.mit.edu) working with [Tess
-Smidt](https://blondegeek.github.io) and [Saman
-Amarasinghe](https://people.csail.mit.edu/saman/). I am hoping to bring a [systems
+Smidt](https://blondegeek.github.io). I am hoping to bring a [systems
 perspective](https://www.usenix.org/system/files/1311_05-08_mickens.pdf) to machine
 learning-based molecular modeling.
 
