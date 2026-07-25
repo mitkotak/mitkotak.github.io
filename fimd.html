@@ -8,15 +8,45 @@
       name="description"
       content="Load a molecular structure and turn its FIMD energy trace into a playable instrument."
     />
-    <title>Molecular piano</title>
+    <title>Can you hear the atoms?</title>
     <link rel="icon" href="data:," />
-    <script type="module" crossorigin src="./fimd-assets/fimd-BUo4LzSY.js"></script>
-    <link rel="stylesheet" crossorigin href="./fimd-assets/fimd-BU68EJS9.css">
+    <script type="module" crossorigin src="./fimd-assets/fimd-tqgbLZoN.js"></script>
+    <link rel="stylesheet" crossorigin href="./fimd-assets/fimd-Bpx_6cCw.css">
   </head>
   <body>
     <main class="workspace">
       <section class="structure-pane" id="drop-zone" aria-label="Molecular structure">
         <div class="loader">
+          <h1 class="site-title">Can you hear the atoms?</h1>
+          <p class="credits">
+            Website inspiration from Frequency-domain Integrator Molecular
+            Dynamics (FIMD)
+            <a
+              href="https://kyunghoon-han.github.io/FIMD_sonification.html"
+              target="_blank"
+              rel="noreferrer"
+              >website</a
+            >
+            based on the
+            <a
+              href="https://arxiv.org/abs/2606.11809"
+              target="_blank"
+              rel="noreferrer"
+              >paper</a
+            >; molecular visuals use
+            <a
+              href="https://py2dmol.solab.org/"
+              target="_blank"
+              rel="noreferrer"
+              >py2Dmol</a
+            >. Built on
+            <a
+              href="https://github.com/ekzhang/jax-js"
+              target="_blank"
+              rel="noreferrer"
+              >jax-js</a
+            >.
+          </p>
           <form class="fetch-row" id="remote-form">
             <label for="structure-id">
               <span>PDB or UniProt ID</span>
@@ -105,21 +135,6 @@
             <p class="run-note" id="run-note">
               The first run computes the normal modes.
             </p>
-            <details class="run-settings">
-              <summary>Settings</summary>
-              <label for="simulation-seed">
-                Seed
-                <input
-                  id="simulation-seed"
-                  type="number"
-                  min="0"
-                  max="4294967295"
-                  step="1"
-                  value="7"
-                  aria-describedby="run-note"
-                />
-              </label>
-            </details>
             <div class="run-actions">
               <button class="primary" id="generate-button" type="button" disabled>
                 Generate sound
@@ -127,12 +142,6 @@
               <button id="cancel-button" type="button" disabled>Cancel</button>
             </div>
           </div>
-          <p class="credits">
-            Website inspiration from
-            <a href="https://kyunghoon-han.github.io/FIMD_sonification.html" target="_blank" rel="noreferrer">FIMD sonification</a>;
-            FIMD is based on the
-            <a href="https://arxiv.org/abs/2606.11809" target="_blank" rel="noreferrer">paper</a>.
-          </p>
         </div>
       </section>
 
@@ -148,13 +157,14 @@
         </div>
 
         <div class="waveform-wrap">
-          <canvas id="waveform" role="img" aria-label="Frequency spectrum of the selected molecular tone"></canvas>
+          <canvas id="waveform" role="img" aria-label="Frequency spectrum of the selected molecular tone" aria-describedby="spectrum-note waveform-duration"></canvas>
           <div class="waveform-empty" id="waveform-empty">
             Generate sound to view the selected tone spectrum
           </div>
-          <span class="time-label left">20 Hz</span>
+          <span class="time-label left">0 Hz</span>
           <span class="spectrum-note" id="spectrum-note">C4</span>
-          <span class="time-label right" id="waveform-duration">— Hz</span>
+          <span class="spectrum-peak" id="waveform-duration">—</span>
+          <span class="time-label right">1800 Hz</span>
         </div>
 
         <div class="sound-controls">
