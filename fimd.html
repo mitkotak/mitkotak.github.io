@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="Load a molecular structure and turn its FIMD energy trace into a playable instrument."
+    />
+    <title>Molecular piano</title>
+    <link rel="icon" href="data:," />
+    <script type="module" crossorigin src="./fimd-assets/fimd-BUo4LzSY.js"></script>
+    <link rel="stylesheet" crossorigin href="./fimd-assets/fimd-BU68EJS9.css">
+  </head>
+  <body>
+    <main class="workspace">
+      <section class="structure-pane" id="drop-zone" aria-label="Molecular structure">
+        <div class="loader">
+          <form class="fetch-row" id="remote-form">
+            <label for="structure-id">
+              <span>PDB or UniProt ID</span>
+              <input
+                id="structure-id"
+                type="text"
+                placeholder="1CRN or P0A8I3"
+                autocomplete="off"
+                autocapitalize="characters"
+                spellcheck="false"
+              />
+            </label>
+            <button class="primary" id="fetch-structure" type="submit">Fetch</button>
+          </form>
+          <div class="loader-actions">
+            <label class="file-button" for="structure-file">
+              Choose file
+              <input
+                id="structure-file"
+                type="file"
+                accept=".pdb,.ent,.cif,.mmcif,chemical/x-pdb,chemical/x-mmcif"
+              />
+            </label>
+            <span class="examples" aria-label="Example structures">
+              <button type="button" data-fixture="ala2">Ala₂</button>
+              <button type="button" data-remote="1UAO">1UAO</button>
+              <button type="button" data-remote="1CRN">1CRN</button>
+            </span>
+            <button class="quiet-button" id="use-default" type="button">Reset</button>
+          </div>
+          <p class="upload-status" id="upload-status" aria-live="polite">
+            Ala₂ · ready
+          </p>
+        </div>
+
+        <div class="structure-summary">
+          <div>
+            <p id="structure-title">Alanine dipeptide</p>
+            <span id="structure-meta">23 atoms · 2 residues</span>
+          </div>
+          <span class="validation-badge" id="topology-status">checking</span>
+        </div>
+
+        <div class="preparation-gate" id="preparation-gate">
+          <span aria-hidden="true">✓</span>
+          <p>
+            <b id="preparation-title">Prepared reference</b>
+            <small id="preparation-copy">Minimized with ff14SB.</small>
+          </p>
+        </div>
+        <div
+          class="validation-report"
+          id="validation-report"
+          role="alert"
+          aria-labelledby="validation-report-title"
+          hidden
+        >
+          <strong id="validation-report-title">This structure cannot run</strong>
+          <ul id="validation-issues"></ul>
+        </div>
+
+        <div class="molecule-frame">
+          <iframe
+            id="molecule-viewer"
+            title="Interactive molecular structure"
+            src="./web/py2dmol-viewer.html"
+          ></iframe>
+        </div>
+
+        <div class="run-card">
+          <div class="run-copy">
+            <span id="run-status" aria-live="polite" aria-atomic="true">Ready</span>
+            <b id="run-progress-copy">10,000 steps · 6 bands</b>
+          </div>
+          <div
+            class="progress-track"
+            id="run-progress-track"
+            role="progressbar"
+            aria-label="Molecular sound generation"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+            aria-valuetext="Not started"
+          ><i id="run-progress"></i></div>
+          <div class="run-bottom">
+            <p class="run-note" id="run-note">
+              The first run computes the normal modes.
+            </p>
+            <details class="run-settings">
+              <summary>Settings</summary>
+              <label for="simulation-seed">
+                Seed
+                <input
+                  id="simulation-seed"
+                  type="number"
+                  min="0"
+                  max="4294967295"
+                  step="1"
+                  value="7"
+                  aria-describedby="run-note"
+                />
+              </label>
+            </details>
+            <div class="run-actions">
+              <button class="primary" id="generate-button" type="button" disabled>
+                Generate sound
+              </button>
+              <button id="cancel-button" type="button" disabled>Cancel</button>
+            </div>
+          </div>
+          <p class="credits">
+            Website inspiration from
+            <a href="https://kyunghoon-han.github.io/FIMD_sonification.html" target="_blank" rel="noreferrer">FIMD sonification</a>;
+            FIMD is based on the
+            <a href="https://arxiv.org/abs/2606.11809" target="_blank" rel="noreferrer">paper</a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="instrument-pane" id="instrument" aria-label="Molecular piano">
+        <div class="instrument-topbar">
+          <span class="device-badge" id="device-status">WebGPU warming up</span>
+          <div class="transport-buttons">
+            <button class="play-button" id="listen-button" type="button" disabled aria-label="Play generated band" aria-pressed="false">▶</button>
+            <button id="twinkle-button" type="button" disabled aria-pressed="false">Play Twinkle</button>
+            <button id="download-button" type="button" disabled>Band WAV</button>
+            <button id="download-song-button" type="button" disabled>Song WAV</button>
+          </div>
+        </div>
+
+        <div class="waveform-wrap">
+          <canvas id="waveform" role="img" aria-label="Frequency spectrum of the selected molecular tone"></canvas>
+          <div class="waveform-empty" id="waveform-empty">
+            Generate sound to view the selected tone spectrum
+          </div>
+          <span class="time-label left">20 Hz</span>
+          <span class="spectrum-note" id="spectrum-note">C4</span>
+          <span class="time-label right" id="waveform-duration">— Hz</span>
+        </div>
+
+        <div class="sound-controls">
+          <label class="slider-control">
+            <span>Volume <b id="volume-copy">60%</b></span>
+            <input id="volume" type="range" min="0" max="100" value="60" />
+          </label>
+          <label class="slider-control">
+            <span>Tempo <b id="tempo-copy">112 BPM</b></span>
+            <input id="tempo" type="range" min="60" max="180" value="112" />
+          </label>
+          <details class="song-control">
+            <summary>Song</summary>
+            <div>
+              <label for="song-select">Score</label>
+              <select id="song-select">
+                <option value="twinkle" selected>Twinkle Twinkle</option>
+                <option value="custom">Custom</option>
+              </select>
+              <label id="custom-score-label" for="custom-score" hidden>Notes</label>
+              <textarea
+                id="custom-score"
+                rows="3"
+                spellcheck="false"
+                aria-describedby="score-format"
+                hidden
+              >C4:1 C4:1 G4:1 G4:1 A4:1 A4:1 G4:2
+F4:1 F4:1 E4:1 E4:1 D4:1 D4:1 C4:2</textarea>
+              <small id="score-format" hidden>NOTE:BEATS · R:BEATS for rests</small>
+            </div>
+          </details>
+        </div>
+
+        <div class="keyboard-shell">
+          <div class="band-rail">
+            <div class="band-list" id="band-list" role="radiogroup" aria-label="Frequency band in inverse centimetres">
+              <button class="band-option selected" type="button" role="radio" aria-checked="true" tabindex="0" data-band="0">300–600</button>
+              <button class="band-option" type="button" role="radio" aria-checked="false" tabindex="-1" data-band="1">600–900</button>
+              <button class="band-option" type="button" role="radio" aria-checked="false" tabindex="-1" data-band="2">900–1200</button>
+              <button class="band-option" type="button" role="radio" aria-checked="false" tabindex="-1" data-band="3">1200–1500</button>
+              <button class="band-option" type="button" role="radio" aria-checked="false" tabindex="-1" data-band="4">1500–2000</button>
+              <button class="band-option" type="button" role="radio" aria-checked="false" tabindex="-1" data-band="5">2000–4000</button>
+            </div>
+            <span>cm⁻¹</span>
+          </div>
+          <div class="keyboard-meta">
+            <span id="output-band">300–600 cm⁻¹</span>
+            <span>A W S E D F T G Y H U J K O L P ;</span>
+          </div>
+          <div class="piano" id="piano" role="group" aria-label="Playable molecular piano"></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
