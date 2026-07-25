@@ -7,6 +7,10 @@ on:
       - main
     paths:
       - "assets/**"
+      - "fimd-assets/**"
+      - "fixtures/fimd/**"
+      - "web/py2dmol-viewer.html"
+      - "web/vendor/py2dmol/**"
       - "_sass/**"
       - "_scripts/**"
       - "**.bib"
@@ -36,6 +40,10 @@ on:
       - main
     paths:
       - "assets/**"
+      - "fimd-assets/**"
+      - "fixtures/fimd/**"
+      - "web/py2dmol-viewer.html"
+      - "web/vendor/py2dmol/**"
       - "_sass/**"
       - "_scripts/**"
       - "**.bib"

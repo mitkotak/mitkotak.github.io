@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trajectory</title>
+    <link rel="icon" href="data:," />
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        --color-primary: #3b82f6;
+        --color-primary-hover: #2563eb;
+        --color-success: #10b981;
+        --color-success-hover: #059669;
+        --color-gray-50: #f9fafb;
+        --color-gray-100: #f3f4f6;
+        --color-gray-200: #e5e7eb;
+        --color-gray-300: #d1d5db;
+        --color-gray-500: #6b7280;
+        --color-gray-700: #374151;
+        --color-gray-800: #1f2937;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --radius-lg: 12px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body,
+      #trajectory-viewer,
+      #mainContainer,
+      #viewerWrapper,
+      #canvasContainer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        overflow: hidden;
+        background: #ffffff;
+      }
+      #mainContainer {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+      #viewerWrapper {
+        min-height: 0;
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) auto;
+        gap: 8px;
+        padding: 8px;
+      }
+      #canvasContainer {
+        position: relative;
+        min-width: 200px;
+        min-height: 200px;
+        overflow: hidden;
+        background: #ffffff;
+        border: 1px solid var(--color-gray-200);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+      }
+      #canvas {
+        display: block;
+        cursor: grab;
+        background: #ffffff;
+        touch-action: none;
+        transition: cursor 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      #canvas:active {
+        cursor: grabbing;
+      }
+      #controlsContainer {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        min-width: 0;
+        padding: 12px 16px;
+        background: #ffffff;
+        border: 1px solid var(--color-gray-200);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+      }
+      button,
+      select,
+      input {
+        font: inherit;
+      }
+      .controlButton {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        height: 36px;
+        min-width: 36px;
+        padding: 0 10px;
+        border: 0;
+        border-radius: 6px;
+        background: var(--color-gray-200);
+        color: var(--color-gray-700);
+        box-shadow: var(--shadow-sm);
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+      .controlButton:hover:not(:disabled) {
+        background: var(--color-gray-300);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-1px);
+      }
+      .controlButton:active:not(:disabled) {
+        transform: translateY(0);
+        box-shadow: var(--shadow-sm);
+      }
+      .controlButton:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+      #playButton {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          var(--color-primary-hover) 100%
+        );
+        color: #ffffff;
+      }
+      #playButton:hover:not(:disabled) {
+        background: var(--color-primary-hover);
+      }
+      #frameSlider {
+        flex: 1 1 auto;
+        width: 100%;
+        min-width: 40px;
+        height: 6px;
+        margin: 0 8px;
+        appearance: none;
+        border-radius: 3px;
+        outline: 0;
+        background: var(--color-gray-200);
+      }
+      #frameSlider::-webkit-slider-thumb,
+      .native-slider::-webkit-slider-thumb {
+        width: 16px;
+        height: 16px;
+        appearance: none;
+        border: 0;
+        border-radius: 50%;
+        background: var(--color-primary);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      #frameSlider::-webkit-slider-thumb:hover,
+      .native-slider::-webkit-slider-thumb:hover {
+        background: var(--color-primary-hover);
+        transform: scale(1.1);
+      }
+      #frameSlider::-moz-range-thumb,
+      .native-slider::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        border: 0;
+        border-radius: 50%;
+        background: var(--color-primary);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+      }
+      #frameCounter {
+        min-width: 50px;
+        color: var(--color-gray-700);
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+      }
+      #appearanceMenu {
+        position: absolute;
+        z-index: 20;
+        top: 12px;
+        right: 12px;
+      }
+      #appearanceMenu > summary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        height: 36px;
+        padding: 0 12px;
+        border: 0;
+        border-radius: 6px;
+        background: rgba(243, 244, 246, 0.94);
+        color: var(--color-gray-700);
+        box-shadow: var(--shadow-md);
+        backdrop-filter: blur(6px);
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        list-style: none;
+      }
+      #appearanceMenu > summary::-webkit-details-marker {
+        display: none;
+      }
+      #appearanceMenu[open] > summary {
+        background: var(--color-primary);
+        color: #ffffff;
+      }
+      #rightPanelContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: min(340px, calc(100vw - 40px));
+        margin-top: 8px;
+        padding: 12px;
+        border: 1px solid var(--color-gray-200);
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: var(--shadow-lg);
+        color: var(--color-gray-700);
+        backdrop-filter: blur(8px);
+      }
+      .toolbar {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .toolbar-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .btn-toggle,
+      .toolbar-button {
+        position: relative;
+        flex: 1 1 0;
+        height: 28px;
+        min-width: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--color-gray-700);
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .btn-toggle input {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+      .btn-toggle > span,
+      .toolbar-button > span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+        height: 28px;
+        padding: 0 10px;
+        border-radius: 6px;
+        background: var(--color-gray-200);
+        box-shadow: var(--shadow-sm);
+        transition: all 0.2s;
+      }
+      .btn-toggle input:checked + span {
+        background: linear-gradient(
+          135deg,
+          var(--color-success) 0%,
+          var(--color-success-hover) 100%
+        );
+        color: #ffffff;
+      }
+      .btn-toggle input:not(:checked) + span:hover,
+      .toolbar-button > span:hover {
+        background: var(--color-gray-300);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-1px);
+      }
+      .control-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .toggle-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+        font-size: 12px;
+      }
+      .toggle-item > label {
+        flex: 0 0 48px;
+        color: var(--color-gray-700);
+        font-weight: 500;
+      }
+      .native-select {
+        flex: 1 1 auto;
+        min-width: 0;
+        height: 28px;
+        padding: 0 8px;
+        border: 1px solid var(--color-gray-300);
+        border-radius: 8px;
+        background: #ffffff;
+        color: var(--color-gray-700);
+        font-size: 12px;
+        cursor: pointer;
+      }
+      .native-select:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        outline: 0;
+      }
+      .native-slider {
+        flex: 1 1 auto;
+        min-width: 0;
+        height: 6px;
+        margin: 0;
+        appearance: none;
+        border-radius: 3px;
+        outline: 0;
+        background: var(--color-gray-200);
+      }
+      .paired-controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .paired-controls .toggle-item > label {
+        flex-basis: 44px;
+      }
+      #outlineModeSelect,
+      #paeContainer,
+      #scatterContainer {
+        display: none;
+      }
+      @media (max-width: 520px) {
+        #viewerWrapper {
+          gap: 6px;
+          padding: 6px;
+        }
+        #controlsContainer {
+          gap: 6px;
+          padding: 9px 10px;
+        }
+        .controlButton {
+          height: 32px;
+          min-width: 32px;
+          padding: 0 8px;
+          font-size: 12px;
+        }
+        #recordButton,
+        #overlayButton {
+          display: none !important;
+        }
+        #frameSlider {
+          margin: 0 2px;
+        }
+        #frameCounter {
+          min-width: 42px;
+          font-size: 12px;
+        }
+        #appearanceMenu {
+          top: 10px;
+          right: 10px;
+        }
+        #appearanceMenu > summary {
+          width: 36px;
+          padding: 0;
+          font-size: 0;
+        }
+        #appearanceMenu > summary span {
+          font-size: 17px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="trajectory-viewer" class="py2dmol-viewer-instance">
+      <div id="mainContainer">
+        <div id="viewerWrapper">
+          <div id="canvasContainer">
+            <canvas id="canvas"></canvas>
+            <details id="appearanceMenu">
+              <summary title="View settings">
+                <span aria-hidden="true">⚙</span>
+                View
+              </summary>
+              <div id="rightPanelContainer">
+                <div class="toolbar">
+                  <div class="toolbar-row">
+                    <button
+                      id="orientButton"
+                      class="toolbar-button"
+                      type="button"
+                      title="Return to the initial view"
+                    >
+                      <span><span aria-hidden="true">⌖</span> Orient</span>
+                    </button>
+                    <label class="btn-toggle" title="Toggle auto-rotation">
+                      <input id="rotationCheckbox" type="checkbox" />
+                      <span><span aria-hidden="true">↻</span> Rotate</span>
+                    </label>
+                  </div>
+                  <div class="toolbar-row">
+                    <label class="btn-toggle" title="Toggle shadow">
+                      <input
+                        id="shadowEnabledCheckbox"
+                        type="checkbox"
+                        checked
+                      />
+                      <span>Shadow</span>
+                    </label>
+                    <button
+                      id="outlineModeButton"
+                      class="toolbar-button"
+                      type="button"
+                      title="Cycle outline mode"
+                    >
+                      <span>Outline</span>
+                    </button>
+                    <button
+                      id="saveSvgButton"
+                      class="toolbar-button"
+                      type="button"
+                      title="Save as SVG"
+                    >
+                      <span aria-label="Save SVG">↓ SVG</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <div class="toggle-item">
+                    <label for="colorSelect">Color:</label>
+                    <select id="colorSelect" class="native-select">
+                      <option value="auto">Auto</option>
+                      <option value="plddt">pLDDT</option>
+                      <option value="deepmind">DeepMind</option>
+                      <option value="rainbow">Rainbow</option>
+                      <option value="chain">Chain</option>
+                      <option id="entropyColorOption" value="entropy" hidden>
+                        Entropy
+                      </option>
+                    </select>
+                    <label class="btn-toggle" title="Colorblind-safe colors">
+                      <input id="colorblindCheckbox" type="checkbox" />
+                      <span>Colorblind</span>
+                    </label>
+                  </div>
+
+                  <div class="paired-controls">
+                    <div class="toggle-item">
+                      <label for="lineWidthSlider">Width:</label>
+                      <input
+                        id="lineWidthSlider"
+                        class="native-slider"
+                        type="range"
+                        min="2"
+                        max="4.7"
+                        value="3"
+                        step="0.1"
+                      />
+                    </div>
+                    <div class="toggle-item">
+                      <label for="outlineWidthSlider">Outline:</label>
+                      <input
+                        id="outlineWidthSlider"
+                        class="native-slider"
+                        type="range"
+                        min="0"
+                        max="10"
+                        value="3"
+                        step="0.1"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="paired-controls">
+                    <div class="toggle-item">
+                      <label for="orthoSlider">Ortho:</label>
+                      <input
+                        id="orthoSlider"
+                        class="native-slider"
+                        type="range"
+                        min="0"
+                        max="1"
+                        value="1"
+                        step="0.01"
+                      />
+                    </div>
+                    <div class="toggle-item">
+                      <label for="shadowSlider">Shadow:</label>
+                      <input
+                        id="shadowSlider"
+                        class="native-slider"
+                        type="range"
+                        min="0"
+                        max="1"
+                        value="0.5"
+                        step="0.01"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="toggle-item">
+                    <label for="objectSelect">Object:</label>
+                    <select id="objectSelect" class="native-select"></select>
+                  </div>
+                </div>
+                <select id="outlineModeSelect" aria-hidden="true">
+                  <option value="none">None</option>
+                  <option value="partial">Partial</option>
+                  <option value="full" selected>Full</option>
+                </select>
+              </div>
+            </details>
+          </div>
+          <div id="controlsContainer">
+            <button
+              id="playButton"
+              class="controlButton"
+              title="Play trajectory"
+              aria-label="Play trajectory"
+            >
+              ▶
+            </button>
+            <button
+              id="recordButton"
+              class="controlButton"
+              title="Record animation"
+              aria-label="Record animation"
+            >
+              ●
+            </button>
+            <input id="frameSlider" type="range" min="0" max="0" value="0" />
+            <span id="frameCounter">0 / 0</span>
+            <button
+              id="speedButton"
+              class="controlButton"
+              title="Playback speed"
+            >
+              1x
+            </button>
+            <button
+              id="overlayButton"
+              class="controlButton"
+              title="Overlay all frames"
+              aria-label="Overlay all frames"
+            >
+              ⧉
+            </button>
+          </div>
+        </div>
+        <div id="paeContainer"><canvas id="paeCanvas"></canvas></div>
+        <div id="scatterContainer"><canvas id="scatterCanvas"></canvas></div>
+      </div>
+    </div>
+    <script>
+      const viewerId = "jax-md-fimd";
+      const size = [
+        Math.max(200, window.innerWidth - 16),
+        Math.max(200, window.innerHeight - 76),
+      ];
+      window.py2dmol_configs = {
+        [viewerId]: {
+          viewer_id: viewerId,
+          display: {
+            size,
+            rotate: false,
+            autoplay: false,
+            controls: true,
+            box: true,
+          },
+          rendering: {
+            shadow: true,
+            shadow_strength: 0.5,
+            outline: "full",
+            width: 3,
+            ortho: 1,
+            detect_cyclic: true,
+          },
+          color: { mode: "auto", colorblind: false },
+          pae: { enabled: false, size: 300 },
+          scatter: { enabled: false, size: 300 },
+          overlay: { enabled: false },
+        },
+      };
+      window.py2dmol_proteinData = {
+        [viewerId]: {
+          coords: [],
+          plddts: [],
+          chains: [],
+          position_types: [],
+          pae: null,
+        },
+      };
+    </script>
+    <script src="./vendor/py2dmol/viewer-mol.min.js"></script>
+    <script>
+      initializePy2DmolViewer(
+        document.getElementById("trajectory-viewer"),
+        viewerId,
+      );
+      document.getElementById("orientButton").addEventListener("click", () => {
+        const renderer = window.py2dmol_viewers?.[viewerId]?.renderer;
+        if (!renderer) return;
+        renderer.viewerState.rotation = [
+          [1, 0, 0],
+          [0, 1, 0],
+          [0, 0, 1],
+        ];
+        renderer.viewerState.center = null;
+        renderer.viewerState.extent = null;
+        renderer.viewerState.zoom = 1;
+        renderer.cachedShadows = null;
+        renderer.cachedTints = null;
+        renderer.lastShadowRotationMatrix = null;
+        renderer.render("orient");
+      });
+    </script>
+  </body>
+</html>
