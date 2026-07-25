@@ -1,6 +1,10 @@
 **/*.map
 **/*.min.css
 **/*.min.js
+fimd-assets/**
+fixtures/fimd/**
+fimd.html
+web/py2dmol-viewer.html
 assets/css/main.scss
 assets/js/distillpub/template.v2.js
 assets/js/search/*.js
