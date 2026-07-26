@@ -11,8 +11,8 @@
     />
     <title>Can you hear the atoms?</title>
     <link rel="icon" href="data:," />
-    <script type="module" crossorigin src="./fimd-assets/fimd-DeYX6vbM.js"></script>
-    <link rel="stylesheet" crossorigin href="./fimd-assets/fimd-l0dEJEC9.css">
+    <script type="module" crossorigin src="./fimd-assets/fimd-Bz3YK2ya.js"></script>
+    <link rel="stylesheet" crossorigin href="./fimd-assets/fimd-CyhHF8mv.css">
   </head>
   <body>
     <main class="workspace">
@@ -72,8 +72,8 @@
             </label>
             <span class="examples" aria-label="Example structures">
               <button type="button" data-fixture="ala2">Ala₂</button>
-              <button type="button" data-remote="1UAO">1UAO</button>
-              <button type="button" data-remote="1CRN">1CRN</button>
+              <button type="button" data-fixture="chignolin">1UAO</button>
+              <button type="button" data-fixture="crambin">1CRN</button>
             </span>
             <button class="quiet-button" id="use-default" type="button">Reset</button>
           </div>
@@ -141,51 +141,28 @@
       </section>
 
       <section class="instrument-pane" id="instrument" aria-label="Molecular piano">
-        <div class="waveform-wrap">
-          <canvas id="waveform" role="img" aria-label="Frequency spectrum of the selected molecular tone" aria-describedby="spectrum-note waveform-duration"></canvas>
-          <div class="waveform-empty" id="waveform-empty">
+        <div class="spectrum-wrap">
+          <canvas id="spectrum-canvas" role="img" aria-label="Audible frequency spectrum of the selected molecular tone" aria-describedby="spectrum-peak"></canvas>
+          <div class="spectrum-empty" id="spectrum-empty">
             Generate sound to view the selected tone spectrum
           </div>
           <span class="time-label left">0 Hz</span>
-          <div class="spectrum-readout">
-            <span class="spectrum-note" id="spectrum-note">C4</span>
-            <span class="spectrum-peak" id="waveform-duration">—</span>
+          <div class="spectrum-readout" id="spectrum-readout" hidden>
+            <span class="spectrum-peak" id="spectrum-peak">—</span>
           </div>
-          <span class="time-label right">1800 Hz</span>
+          <span class="time-label right" id="spectrum-max-label">— Hz</span>
         </div>
 
         <div class="instrument-topbar">
           <div class="transport-buttons">
-            <button class="play-button" id="listen-button" type="button" disabled aria-label="Play generated band" aria-pressed="false">▶</button>
             <button id="twinkle-button" type="button" disabled aria-pressed="false">Play Twinkle</button>
-            <button id="download-button" type="button" disabled>Band WAV</button>
-            <button id="download-song-button" type="button" disabled>Song WAV</button>
           </div>
-        </div>
-
-        <div class="sound-controls">
-          <label class="slider-control">
-            <span>Volume <b id="volume-copy">60%</b></span>
-            <input id="volume" type="range" min="0" max="100" value="60" />
-          </label>
-          <label class="slider-control">
-            <span>Tempo <b id="tempo-copy">112 BPM</b></span>
-            <input id="tempo" type="range" min="60" max="180" value="112" />
-          </label>
         </div>
 
         <div class="keyboard-shell">
-          <div class="band-rail">
-            <div class="band-list" id="band-list" role="radiogroup" aria-label="Frequency band in inverse centimetres">
-              <button class="band-option selected" type="button" role="radio" aria-checked="true" tabindex="0" data-band="0">300–600</button>
-              <button class="band-option" type="button" role="radio" aria-checked="false" tabindex="-1" data-band="1">600–900</button>
-              <button class="band-option" type="button" role="radio" aria-checked="false" tabindex="-1" data-band="2">900–1200</button>
-              <button class="band-option" type="button" role="radio" aria-checked="false" tabindex="-1" data-band="3">1200–1500</button>
-              <button class="band-option" type="button" role="radio" aria-checked="false" tabindex="-1" data-band="4">1500–2000</button>
-              <button class="band-option" type="button" role="radio" aria-checked="false" tabindex="-1" data-band="5">2000–4000</button>
-            </div>
-            <span>cm⁻¹</span>
-          </div>
+          <section class="vibration-guide" aria-label="Representative molecular vibrations">
+            <div class="vibration-grid" id="vibration-grid" role="radiogroup" aria-label="Molecular frequency band in inverse centimetres"></div>
+          </section>
           <div class="keyboard-meta">
             <span id="output-band">300–600 cm⁻¹</span>
             <span>A W S E D F T G Y H U J K O L P ;</span>

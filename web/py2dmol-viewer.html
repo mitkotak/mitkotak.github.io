@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Molecule</title>
     <link rel="icon" href="data:," />
+    <script>
+      if (new URLSearchParams(location.search).has("vibration")) {
+        document.documentElement.classList.add("vibration-mode");
+      }
+    </script>
     <style>
       @font-face {
         font-family: "Matter";
@@ -87,6 +92,27 @@
       }
       #canvas:active {
         cursor: grabbing;
+      }
+      html.vibration-mode #viewerWrapper {
+        padding: 0;
+      }
+      html.vibration-mode #canvasContainer {
+        min-width: 0;
+        min-height: 0;
+        border: 0 !important;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      html.vibration-mode #canvas {
+        cursor: grab;
+        pointer-events: auto;
+      }
+      html.vibration-mode #canvas:active {
+        cursor: grabbing;
+      }
+      html.vibration-mode #appearanceMenu,
+      html.vibration-mode #colorblindControl {
+        display: none;
       }
       #controlsContainer {
         display: none !important;
@@ -641,9 +667,14 @@
         BR: { r: 221, g: 93, b: 94 },
         I: { r: 169, g: 120, b: 120 },
       };
+      const vibrationMode = document.documentElement.classList.contains(
+        "vibration-mode",
+      );
+      const inset = vibrationMode ? 0 : 16;
+      const minimumSize = vibrationMode ? 80 : 200;
       const size = [
-        Math.max(200, window.innerWidth - 16),
-        Math.max(200, window.innerHeight - 16),
+        Math.max(minimumSize, window.innerWidth - inset),
+        Math.max(minimumSize, window.innerHeight - inset),
       ];
       window.py2dmol_configs = {
         [viewerId]: {
@@ -698,6 +729,14 @@
       document.getElementById("viewerWrapper").style.width = "";
       document.getElementById("canvasContainer").style.width = "";
       document.getElementById("canvasContainer").style.height = "";
+      if (vibrationMode) {
+        document.getElementById("canvas").addEventListener("pointerup", () => {
+          window.parent.postMessage(
+            { type: "fimd-vibration-select" },
+            window.location.origin,
+          );
+        });
+      }
       document.getElementById("orientButton").addEventListener("click", () => {
         const renderer = window.py2dmol_viewers?.[viewerId]?.renderer;
         if (!renderer) return;
