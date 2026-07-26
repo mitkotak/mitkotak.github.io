@@ -6,28 +6,36 @@
     <title>Molecule</title>
     <link rel="icon" href="data:," />
     <style>
+      @font-face {
+        font-family: "Matter";
+        src: url("./fonts/MatterVF.woff2") format("woff2-variations");
+        font-weight: 100 900;
+        font-style: normal italic;
+        font-display: swap;
+      }
+
       :root {
-        color-scheme: light;
-        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
-        --color-primary: #3b82f6;
-        --color-primary-hover: #2563eb;
-        --color-success: #10b981;
-        --color-success-hover: #059669;
-        --color-gray-50: #f9fafb;
-        --color-gray-100: #f3f4f6;
-        --color-gray-200: #e5e7eb;
-        --color-gray-300: #d1d5db;
-        --color-gray-500: #6b7280;
-        --color-gray-700: #374151;
-        --color-gray-800: #1f2937;
-        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        color-scheme: dark;
+        font-family: "Matter", ui-sans-serif, system-ui, sans-serif;
+        --color-primary: #7ba2dc;
+        --color-primary-hover: #5f8dcc;
+        --color-success: #8fb974;
+        --color-success-hover: #719d57;
+        --color-gray-50: #2a251d;
+        --color-gray-100: #282219;
+        --color-gray-200: #40382c;
+        --color-gray-300: #5a4f3f;
+        --color-gray-500: #9a907f;
+        --color-gray-700: #c1b8a6;
+        --color-gray-800: #f0e9dc;
+        --viewer-bg: #191510;
+        --viewer-panel: #211c15;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
         --shadow-md:
-          0 4px 6px -1px rgba(0, 0, 0, 0.1),
-          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          0 4px 6px -1px rgba(0, 0, 0, 0.38),
+          0 2px 4px -1px rgba(0, 0, 0, 0.28);
         --shadow-lg:
-          0 10px 15px -3px rgba(0, 0, 0, 0.1),
-          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          0 10px 28px rgba(0, 0, 0, 0.55);
         --radius-lg: 12px;
       }
       * {
@@ -44,7 +52,7 @@
       }
       body {
         overflow: hidden;
-        background: #ffffff;
+        background: var(--viewer-bg);
       }
       #mainContainer {
         display: flex;
@@ -65,15 +73,15 @@
         min-width: 200px;
         min-height: 200px;
         overflow: hidden;
-        background: #ffffff;
-        border: 1px solid var(--color-gray-200);
+        background: var(--viewer-bg) !important;
+        border: 1px solid var(--color-gray-200) !important;
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow-md);
       }
       #canvas {
         display: block;
         cursor: grab;
-        background: #ffffff;
+        background: var(--viewer-bg);
         touch-action: none;
         transition: cursor 150ms cubic-bezier(0.4, 0, 0.2, 1);
       }
@@ -87,7 +95,7 @@
         width: 100%;
         min-width: 0;
         padding: 12px 16px;
-        background: #ffffff;
+        background: var(--viewer-panel);
         border: 1px solid var(--color-gray-200);
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow-md);
@@ -134,7 +142,7 @@
           var(--color-primary) 0%,
           var(--color-primary-hover) 100%
         );
-        color: #ffffff;
+        color: #17130f;
       }
       #playButton:hover:not(:disabled) {
         background: var(--color-primary-hover);
@@ -190,7 +198,21 @@
         top: 12px;
         right: 12px;
         width: 0;
-        height: 36px;
+        height: 43px;
+      }
+      #colorblindControl {
+        position: absolute;
+        z-index: 19;
+        top: 12px;
+        right: 100px;
+        width: 108px;
+        height: 43px;
+      }
+      #colorblindControl > span {
+        height: 43px;
+        background: rgba(42, 37, 29, 0.94);
+        color: var(--color-gray-700);
+        backdrop-filter: blur(6px);
       }
       #appearanceMenu > summary {
         position: absolute;
@@ -199,17 +221,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 6px;
-        height: 36px;
-        padding: 0 12px;
+        gap: 7px;
+        height: 43px;
+        padding: 0 14px;
         border: 0;
         border-radius: 6px;
-        background: rgba(243, 244, 246, 0.94);
+        background: rgba(42, 37, 29, 0.94);
         color: var(--color-gray-700);
         box-shadow: var(--shadow-md);
         backdrop-filter: blur(6px);
         cursor: pointer;
-        font-size: 13px;
+        font-size: 16px;
         font-weight: 600;
         list-style: none;
       }
@@ -218,11 +240,11 @@
       }
       #appearanceMenu[open] > summary {
         background: var(--color-primary);
-        color: #ffffff;
+        color: #17130f;
       }
       #rightPanelContainer {
         position: absolute;
-        top: 44px;
+        top: 52px;
         right: 0;
         display: flex !important;
         flex-direction: column;
@@ -231,7 +253,7 @@
         padding: 12px;
         border: 1px solid var(--color-gray-200);
         border-radius: var(--radius-lg);
-        background: rgba(255, 255, 255, 0.98);
+        background: rgba(33, 28, 21, 0.98);
         box-shadow: var(--shadow-lg);
         color: var(--color-gray-700);
         backdrop-filter: blur(8px);
@@ -291,7 +313,7 @@
           var(--color-success) 0%,
           var(--color-success-hover) 100%
         );
-        color: #ffffff;
+        color: #17130f;
       }
       .btn-toggle input:not(:checked) + span:hover,
       .toolbar-button > span:hover {
@@ -329,7 +351,7 @@
         padding: 0 8px;
         border: 1px solid var(--color-gray-300);
         border-radius: 8px;
-        background: #ffffff;
+        background: var(--viewer-bg);
         color: var(--color-gray-700);
         font-size: 12px;
         cursor: pointer;
@@ -392,13 +414,17 @@
           top: 10px;
           right: 10px;
         }
+        #colorblindControl {
+          top: 10px;
+          right: 61px;
+        }
         #appearanceMenu > summary {
-          width: 36px;
+          width: 43px;
           padding: 0;
           font-size: 0;
         }
         #appearanceMenu > summary span {
-          font-size: 17px;
+          font-size: 20px;
         }
       }
     </style>
@@ -409,6 +435,14 @@
         <div id="viewerWrapper">
           <div id="canvasContainer">
             <canvas id="canvas"></canvas>
+            <label
+              id="colorblindControl"
+              class="btn-toggle"
+              title="Use colors distinguishable with common color-vision deficiencies"
+            >
+              <input id="colorblindCheckbox" type="checkbox" />
+              <span>Colorblind</span>
+            </label>
             <details id="appearanceMenu">
               <summary title="View settings">
                 <span aria-hidden="true">⚙</span>
@@ -462,6 +496,7 @@
                   <div class="toggle-item">
                     <label for="colorSelect">Color:</label>
                     <select id="colorSelect" class="native-select">
+                      <option value="element">Element</option>
                       <option value="auto">Auto</option>
                       <option value="plddt">pLDDT</option>
                       <option value="deepmind">DeepMind</option>
@@ -471,10 +506,6 @@
                         Entropy
                       </option>
                     </select>
-                    <label class="btn-toggle" title="Colorblind-safe colors">
-                      <input id="colorblindCheckbox" type="checkbox" />
-                      <span>Colorblind</span>
-                    </label>
                   </div>
 
                   <div class="paired-controls">
@@ -484,7 +515,7 @@
                         id="lineWidthSlider"
                         class="native-slider"
                         type="range"
-                        min="2"
+                        min="1"
                         max="4.7"
                         value="3"
                         step="0.1"
@@ -586,6 +617,30 @@
     </div>
     <script>
       const viewerId = "jax-md-fimd";
+      const elementColors = {
+        H: { r: 224, g: 224, b: 224 },
+        C: { r: 112, g: 120, b: 128 },
+        N: { r: 70, g: 112, b: 214 },
+        O: { r: 214, g: 70, b: 70 },
+        F: { r: 78, g: 180, b: 90 },
+        P: { r: 224, g: 133, b: 52 },
+        S: { r: 220, g: 188, b: 52 },
+        CL: { r: 78, g: 180, b: 90 },
+        BR: { r: 154, g: 74, b: 52 },
+        I: { r: 126, g: 76, b: 176 },
+      };
+      const colorblindElementColors = {
+        H: { r: 237, g: 237, b: 237 },
+        C: { r: 159, g: 159, b: 159 },
+        N: { r: 87, g: 153, b: 199 },
+        O: { r: 255, g: 159, b: 74 },
+        F: { r: 81, g: 206, b: 195 },
+        P: { r: 175, g: 141, b: 207 },
+        S: { r: 205, g: 205, b: 89 },
+        CL: { r: 81, g: 206, b: 195 },
+        BR: { r: 221, g: 93, b: 94 },
+        I: { r: 169, g: 120, b: 120 },
+      };
       const size = [
         Math.max(200, window.innerWidth - 16),
         Math.max(200, window.innerHeight - 16),
@@ -598,17 +653,17 @@
             rotate: false,
             autoplay: false,
             controls: false,
-            box: true,
+            box: false,
           },
           rendering: {
             shadow: true,
             shadow_strength: 0.5,
             outline: "full",
-            width: 3,
+            width: 1.8,
             ortho: 1,
             detect_cyclic: true,
           },
-          color: { mode: "auto", colorblind: false },
+          color: { mode: "element", colorblind: false },
           pae: { enabled: false, size: 300 },
           scatter: { enabled: false, size: 300 },
           overlay: { enabled: false },
@@ -626,6 +681,13 @@
     </script>
     <script src="./vendor/py2dmol/viewer-mol.min.js"></script>
     <script>
+      registerCustomColorMode("element", (index, renderer) => {
+        const element = renderer.positionNames?.[index]?.toUpperCase();
+        const palette = renderer.colorblindMode
+          ? colorblindElementColors
+          : elementColors;
+        return palette[element] ?? { r: 150, g: 150, b: 150 };
+      });
       initializePy2DmolViewer(
         document.getElementById("trajectory-viewer"),
         viewerId,
