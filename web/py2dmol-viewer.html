@@ -729,14 +729,6 @@
       document.getElementById("viewerWrapper").style.width = "";
       document.getElementById("canvasContainer").style.width = "";
       document.getElementById("canvasContainer").style.height = "";
-      if (vibrationMode) {
-        document.getElementById("canvas").addEventListener("pointerup", () => {
-          window.parent.postMessage(
-            { type: "fimd-vibration-select" },
-            window.location.origin,
-          );
-        });
-      }
       document.getElementById("orientButton").addEventListener("click", () => {
         const renderer = window.py2dmol_viewers?.[viewerId]?.renderer;
         if (!renderer) return;
