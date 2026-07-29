@@ -11,8 +11,8 @@
     />
     <title>Can You Hear the Molecules?</title>
     <link rel="icon" href="data:," />
-    <script type="module" crossorigin src="./fimd-assets/fimd-CvDF7yMP.js"></script>
-    <link rel="stylesheet" crossorigin href="./fimd-assets/fimd-y8HWLMEa.css">
+    <script type="module" crossorigin src="./fimd-assets/fimd-_XJxjlWt.js"></script>
+    <link rel="stylesheet" crossorigin href="./fimd-assets/fimd-L4hycLxB.css">
   </head>
   <body>
     <main class="workspace">
@@ -140,30 +140,30 @@
         </div>
       </section>
 
-      <section class="instrument-pane" id="instrument" aria-label="Molecular piano">
+      <section class="instrument-pane" id="instrument" aria-label="Six-chord molecular progression">
         <div class="spectrum-wrap">
-          <canvas id="spectrum-canvas" role="img" aria-label="Audible frequency spectrum of the selected molecular tone" aria-describedby="spectrum-peak"></canvas>
+          <canvas id="spectrum-canvas" role="img" aria-label="All six molecular normal-mode spectra in inverse centimetres"></canvas>
           <div class="spectrum-empty" id="spectrum-empty">
-            Generate sound to view the selected tone spectrum
+            Generate sound to view all six molecular spectra
           </div>
-          <span class="time-label left">0 Hz</span>
-          <div class="spectrum-readout" id="spectrum-readout" hidden>
-            <span class="spectrum-peak" id="spectrum-peak">—</span>
-          </div>
-          <span class="time-label right" id="spectrum-max-label">— Hz</span>
+          <span class="spectrum-axis-label left">0 cm⁻¹</span>
+          <span class="spectrum-axis-label right" id="spectrum-max-label">— cm⁻¹</span>
         </div>
 
         <div class="instrument-topbar">
           <div class="transport-buttons">
-            <button id="twinkle-button" type="button" disabled aria-pressed="false">Play Twinkle</button>
+            <button id="orchestra-button" type="button" disabled aria-pressed="false">Play progression</button>
+            <label class="reference-toggle" for="reference-toggle">
+              <input id="reference-toggle" type="checkbox" />
+              <span>Reference · all 6 voices</span>
+            </label>
           </div>
         </div>
 
         <div class="keyboard-shell">
-          <section class="vibration-guide" aria-label="Representative molecular vibrations">
-            <div class="vibration-grid" id="vibration-grid" role="radiogroup" aria-label="Molecular frequency band in inverse centimetres"></div>
+          <section class="vibration-guide" aria-label="Molecular bands as progression chords">
+            <div class="vibration-grid" id="vibration-grid" role="list" aria-label="Six molecular frequency bands in a descending-fifths progression"></div>
           </section>
-          <div class="piano" id="piano" role="group" aria-label="Playable molecular piano"></div>
         </div>
       </section>
     </main>
